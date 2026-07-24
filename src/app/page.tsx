@@ -1,20 +1,7 @@
-import NewJob from "@/components/NewJob";
-import { createClient } from "@/utils/supabase/client";
-
+import Link from "next/link";
+import JobApplications from "./jobs/page";
 
 export default async function Home() {
-
-const {data: jobs, error } = await createClient()
-.from("job_application")
-.select("*")
-.order("date_applied", {ascending: false});
-
-
-if (error) {
-  throw error
-}
-
-
   
   return (
     <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
@@ -23,26 +10,15 @@ if (error) {
           <span className="material-symbols-outlined text-3xl">work_history</span>
           JobTrackr
         </h1>
+        <div className="w-72 m-auto">
+          <Link href={"/jobs/new"} className="w-full flex justify-center bg-primary text-white px-3 py-1 rounded-md text-center">
+            <span className="material-symbols-outlined">add</span>
+            Add New Job</Link>
+        </div>
 
-        {jobs && jobs.length > 0 ? (
-          jobs.map((job) => (
-            <div key={job.id}>
-              <h2>{job.job_title}</h2>
-              <p>{job.company_name}</p>
-              <p>{job.job_application}</p>
-              <p>{job.notes}</p>
-              <p>{job.job_source}</p>
-            
-            </div>
-            
-          ))
-        ) : (
-          <p>No job application found</p>
-        )}
+     <JobApplications />
 
       </main>
-
-      <NewJob />
     </div>
   );
 }

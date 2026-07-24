@@ -21,7 +21,7 @@ export async function createJob(job: CreateJob) {
   return data;
 }
 
-type UpdateJob = Partial<Pick<Job, "application_status" | "notes">>;
+type UpdateJob = Partial<Omit<Job, "id" | "created_at" | "updated_at">>;
 export async function updateJob(id: string, updates: UpdateJob) {
   const supabase = await createClient();
 
@@ -35,4 +35,20 @@ export async function updateJob(id: string, updates: UpdateJob) {
     if (error) throw error
 
     return data
+}
+
+
+export async function getJobs() {
+  const supabase = await createClient()
+  const {data, error } = await supabase
+  .from("job_application")
+  .select("*")
+  .order("date_applied", {ascending: false});
+  
+  
+  if (error) {
+    throw error
+  }
+
+  return data
 }

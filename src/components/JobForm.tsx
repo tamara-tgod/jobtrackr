@@ -5,7 +5,7 @@ import { Job } from "@/types/job";
 import { useState } from "react";
 import { Loader2 } from "lucide-react";
 
-export default function NewJob() {
+export default function JobForm() {
   // formatted date
   const today = new Date();
 

@@ -1,5 +1,5 @@
 import { Job } from "@/types/job"
-import { useEffect, useState } from "react"
+import { useState } from "react"
 import { updateJob } from "@/services/jobService"
 import { useRouter } from "next/navigation"
 
