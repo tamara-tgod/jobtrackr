@@ -1,6 +1,7 @@
 import JobFooter from "@/components/JobFooter";
 import { getJobById } from "@/services/jobService";
 import { Job } from "@/types/job";
+import Link from "next/link";
 
 type PageProps = {
   params: Promise<{
@@ -29,8 +30,12 @@ export default async function JobPage({ params }: PageProps) {
 
   return (
     <div className="flex flex-col gap-4 max-w-4xl w-full mx-auto px-4 py-6">
+       <Link href={"/"} className="flex text-gray-400 ">
+          <span className="material-symbols-outlined">arrow_left_alt</span>
+          Back to Board
+        </Link>
       <div className="flex flex-col gap-4">
-        <h1 className="text-xl">{job.job_title}</h1>
+        <h1 className="text-2xl">{job.job_title}</h1>
         <div className="flex flex-wrap items-center gap-2">
           <p className="flex items-center">
             <span className="material-symbols-outlined text-primary/20">
@@ -38,7 +43,7 @@ export default async function JobPage({ params }: PageProps) {
             </span>
             {job.company_name}
           </p>
-          <p className={`px-2 py-1.5 rounded-full ${statusStyles[job.application_status]}`}
+          <p className={`px-3 py-1 rounded-full ${statusStyles[job.application_status]}`}
           >
             {job.application_status}
           </p>
