@@ -1,3 +1,5 @@
+"use client"
+
 import { Job } from "@/types/job"
 import { useState } from "react"
 import { updateJob } from "@/services/jobService"
@@ -49,7 +51,7 @@ export default function StatusDropdown( {id, application_status}: StatusDropdown
     }
     return (
         <div>
-            <div>
+            <div className="flex flex-col">
               <label htmlFor="application_status">Application Status</label>
           <select
             name="application status"
@@ -57,7 +59,7 @@ export default function StatusDropdown( {id, application_status}: StatusDropdown
             value={status}
             onChange={handleChange}
             disabled={loading}
-            className=" border border-gray-500"
+            className=" border border-gray-500 w-82 py-1.5"
           >
             <option value="applied">Applied</option>
             <option value="interview">Interview</option>

@@ -6,6 +6,7 @@
   --tertiary: #F59E0B;
   --neutral: #F59E0B;
   --foreground: #ededed;
+  --body: #d3e4fe;
 }
 
 @theme {
@@ -14,6 +15,7 @@
   --color-sectertiaryondary: var(--tertiary);
   --color-neutral: var(--neutral);
   --color-foreground: var(--foreground);
+  --color-body: var(--body);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
 }

@@ -7,7 +7,7 @@ interface JobCardProps {
 
 export default function JobCard({ job }: JobCardProps) {
   return (
-    <Link href={"/job/id"} className="border w-72 rounded-md">
+    <Link href={`/jobs/${job.id}`} className="border w-72 rounded-md">
       <div className="py-1 px-2">
         <h2>{job.job_title}</h2>
         <p>{job.company_name}</p>

@@ -52,3 +52,21 @@ export async function getJobs() {
 
   return data
 }
+
+
+// gets a job by ID
+export async function getJobById(id: string): Promise<Job> {
+  const supabase = await createClient()
+  const {data, error} = await supabase
+  .from("job_application")
+  .select("*")
+  .eq("id", id)
+  .single()
+
+  if(error) {
+    console.log("Supabase error:", error)
+    throw error
+  }
+
+  return data
+}
