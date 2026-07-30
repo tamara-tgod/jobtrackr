@@ -29,7 +29,7 @@ export default function RootLayout({
         href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
         rel="stylesheet" />
       </head>
-      <body className="bg-body min-h-full flex flex-col">{children}</body>
+      <body className="bg-body min-h-full flex flex-col mx-auto w-full max-w-6xl px-4 sm:px-6 lg:px-8">{children}</body>
     </html>
   );
 }

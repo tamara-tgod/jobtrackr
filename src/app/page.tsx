@@ -4,8 +4,8 @@ import JobApplications from "./jobs/page";
 export default async function Home() {
   
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-10 bg-white dark:bg-black sm:items-start">
+    <div className="flex flex-col flex-1 items-center justify-center dark:bg-black">
+      <main className="flex flex-1 w-full max-w-3xl flex-col items-start justify-between py-32 px-1 md:items-center">
         <h1 className="text-primary text-2xl flex items-center gap-1">
           <span className="material-symbols-outlined text-3xl">work_history</span>
           JobTrackr
