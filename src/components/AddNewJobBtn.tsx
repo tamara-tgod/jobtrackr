@@ -7,7 +7,7 @@ export default function AddNewJobBtn() {
         href={"/jobs/new"}
         className="w-full flex justify-center bg-primary text-white px-3 py-2 rounded-md text-center"
       >
-        <span className="material-symbols-outlined">add</span>
+        <span className="material-symbols-outlined">add_circle</span>
         Add New Job
       </Link>
     </div>

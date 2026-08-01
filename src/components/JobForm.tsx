@@ -5,6 +5,8 @@ import { Job } from "@/types/job";
 import { useState } from "react";
 import { Loader2 } from "lucide-react";
 
+// add form validation
+
 export default function JobForm() {
   // formatted date
   const today = new Date();
@@ -72,17 +74,22 @@ export default function JobForm() {
   }
 
   return (
-    <div className="flex flex-col justify-between gap-4 py-4">
-      <h1 className="text-primary flex justify-between">
-        Add New Job
+    <div className=" flex flex-col justify-between gap-4 py-4">
+      <div className="flex justify-between items-center">
+        <h1 className="text-primary text-2xl flex items-center">
+          <span className="material-symbols-outlined text-gray-600">
+            add
+          </span>
+            Add New Job
+        </h1>
         <span className="material-symbols-outlined text-gray-600">
-          work_history
-        </span>
-      </h1>
+            work_history
+          </span>
+      </div>
 
       <form
         onSubmit={handleSubmit}
-        className="flex flex-col gap-2 p-4 rounded-md border border-gray-500 border-t-4 border-t-primary"
+        className="bg-white flex flex-col gap-5 p-4 rounded-md border border-outline-variant border-t-4 border-t-primary"
       >
         <div className="flex flex-col gap-1">
           <label htmlFor="company_name">Company Name</label>
@@ -91,7 +98,7 @@ export default function JobForm() {
             value={company_name}
             onChange={(e) => setCompany(e.target.value)}
             placeholder="e.g Google, Stripe"
-            className=" border border-gray-500"
+            className="bg-body p-2 border border-outline-variant rounded-xl"
           />
         </div>
 
@@ -102,7 +109,7 @@ export default function JobForm() {
             value={job_title}
             onChange={(e) => setJobTitle(e.target.value)}
             placeholder="e.g Product Designer"
-            className=" border border-gray-500"
+            className="bg-body p-2 border border-outline-variant rounded-xl"
           />
         </div>
 
@@ -115,7 +122,7 @@ export default function JobForm() {
             onChange={(e) =>
               setApplicationStatus(e.target.value as Job["application_status"])
             }
-            className=" border border-gray-500"
+            className="bg-body p-2 border border-outline-variant rounded-xl"
           >
             <option value="select">select status</option>
             <option value="applied">Applied</option>
@@ -134,7 +141,7 @@ export default function JobForm() {
             value={job_source}
             onChange={(e) => setJobSource(e.target.value)}
             placeholder="Indeed"
-            className=" border border-gray-500"
+            className="bg-body p-2 border border-outline-variant rounded-xl"
           />
         </div>
 
@@ -144,7 +151,7 @@ export default function JobForm() {
             type="date"
             value={date_applied}
             onChange={(e) => setDateApplied(e.target.value)}
-            className=" border border-gray-500"
+            className="bg-body p-2 border border-outline-variant rounded-xl"
           />
         </div>
 
@@ -155,7 +162,7 @@ export default function JobForm() {
             value={job_url}
             onChange={(e) => setJobUrl(e.target.value)}
             placeholder="https://..."
-            className=" border border-gray-500"
+            className="bg-body p-2 border border-outline-variant rounded-xl"
           />
         </div>
 
@@ -165,7 +172,7 @@ export default function JobForm() {
             type="date"
             value={follow_up_date}
             onChange={(e) => setFollowUpDate(e.target.value)}
-            className=" border border-gray-500"
+            className="bg-body p-2 border border-outline-variant rounded-xl"
           />
         </div>
 
@@ -178,7 +185,7 @@ export default function JobForm() {
             cols={50}
             value={notes}
             onChange={(e) => setNotes(e.target.value)}
-            className="border"
+            className="bg-body p-2 border border-outline-variant rounded-xl"
           ></textarea>
         </div>
 
@@ -188,8 +195,9 @@ export default function JobForm() {
           <button
             type="submit"
             disabled={isSubmitting}
-            className="border border-gray-500 rounded-full py-1.5 w-80 m-auto"
+            className="bg-primary text-white p-2 border border-outline-variant rounded-xl w-80 m-auto flex items-center justify-center gap-1"
           >
+            <span className="material-symbols-outlined">add_circle</span>
             {isSubmitting ? (
               <>
                 <Loader2 /> Adding Job...
@@ -202,8 +210,9 @@ export default function JobForm() {
           <button
             type="button"
             onClick={handleCancel}
-            className="border border-gray-500 rounded-full py-1.5 w-80 m-auto"
+            className="bg-red-500 text-white p-2 border border-outline-variant rounded-xl w-80 m-auto  flex items-center justify-center gap-1"
           >
+            <span className="material-symbols-outlined">cancel</span>
             Cancel
           </button>
         </div>
