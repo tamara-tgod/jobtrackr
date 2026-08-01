@@ -1,12 +1,18 @@
 import JobList from "@/components/JobList";
+import Link from "next/link";
 
 export default async function JobApplications() {
   
   return (
-    <div className="flex flex-col flex-1 items-center justify-start font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-start justify-between py-3 px-2 md:py-8 md:px-4 dark:bg-black md:items-center">
+      <div className="flex flex-col dark:bg-black">
+        <header>
+          <Link href={"/"} className="text-gray-500 flex">
+          <span className="material-symbols-outlined">arrow_left_alt</span>
+          Back to Dashboard</Link>
+        </header>
+      <main className="flex flex-1 w-full max-w-3xl flex-col items-start justify-between py-32 px-1 md:items-center">
 
-        <JobList />
+     <JobList />
 
       </main>
     </div>

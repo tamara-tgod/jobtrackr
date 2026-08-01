@@ -30,9 +30,9 @@ export default async function JobPage({ params }: PageProps) {
 
   return (
     <div className="flex flex-col gap-4 max-w-4xl w-full mx-auto px-4 py-6">
-       <Link href={"/"} className="flex text-gray-400 ">
+       <Link href={"/jobs"} className="flex text-gray-400 ">
           <span className="material-symbols-outlined">arrow_left_alt</span>
-          Back to Board
+          Back to Applications
         </Link>
       <div className="flex flex-col gap-4">
         <h1 className="text-2xl">{job.job_title}</h1>

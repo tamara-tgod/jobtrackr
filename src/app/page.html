@@ -1,0 +1,299 @@
+<!DOCTYPE html><html class="light" lang="en"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0, viewport-fit=cover" name="viewport">
+<title>JobTrackr Dashboard</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-secondary": "#ffffff",
+                    "on-secondary-fixed": "#002113",
+                    "surface-container": "#e5eeff",
+                    "secondary-container": "#6cf8bb",
+                    "tertiary-fixed": "#ffddb8",
+                    "outline": "#737686",
+                    "on-tertiary-fixed-variant": "#653e00",
+                    "primary-fixed": "#dbe1ff",
+                    "on-tertiary-fixed": "#2a1700",
+                    "on-surface": "#0b1c30",
+                    "on-tertiary": "#ffffff",
+                    "outline-variant": "#c3c6d7",
+                    "on-secondary-container": "#00714d",
+                    "primary-fixed-dim": "#b4c5ff",
+                    "on-surface-variant": "#434655",
+                    "surface-tint": "#0053db",
+                    "secondary": "#006c49",
+                    "on-error-container": "#93000a",
+                    "surface-container-highest": "#d3e4fe",
+                    "tertiary": "#784b00",
+                    "tertiary-fixed-dim": "#ffb95f",
+                    "on-primary-container": "#eeefff",
+                    "secondary-fixed": "#6ffbbe",
+                    "surface-container-high": "#dce9ff",
+                    "tertiary-container": "#996100",
+                    "inverse-surface": "#213145",
+                    "surface": "#f8f9ff",
+                    "surface-container-low": "#eff4ff",
+                    "primary": "#004ac6",
+                    "primary-container": "#2563eb",
+                    "surface-container-lowest": "#ffffff",
+                    "on-background": "#0b1c30",
+                    "on-primary": "#ffffff",
+                    "surface-bright": "#f8f9ff",
+                    "inverse-on-surface": "#eaf1ff",
+                    "on-primary-fixed": "#00174b",
+                    "on-primary-fixed-variant": "#003ea8",
+                    "surface-dim": "#cbdbf5",
+                    "on-tertiary-container": "#ffeedd",
+                    "inverse-primary": "#b4c5ff",
+                    "error-container": "#ffdad6",
+                    "on-secondary-fixed-variant": "#005236",
+                    "on-error": "#ffffff",
+                    "secondary-fixed-dim": "#4edea3",
+                    "background": "#f8f9ff",
+                    "error": "#ba1a1a",
+                    "surface-variant": "#d3e4fe"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "container-max": "1280px",
+                    "2xl": "48px",
+                    "gutter": "24px",
+                    "lg": "24px",
+                    "3xl": "64px",
+                    "xs": "4px",
+                    "xl": "32px",
+                    "sm": "8px",
+                    "md": "16px",
+                    "base": "4px"
+            },
+            "fontFamily": {
+                    "headline-lg": ["Inter"],
+                    "label-sm": ["Inter"],
+                    "headline-lg-mobile": ["Inter"],
+                    "body-lg": ["Inter"],
+                    "body-md": ["Inter"],
+                    "display-lg": ["Inter"],
+                    "body-sm": ["Inter"],
+                    "label-md": ["Inter"],
+                    "headline-md": ["Inter"]
+            },
+            "fontSize": {
+                    "headline-lg": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+                    "label-sm": ["12px", { "lineHeight": "16px", "fontWeight": "600" }],
+                    "headline-lg-mobile": ["24px", { "lineHeight": "32px", "fontWeight": "600" }],
+                    "body-lg": ["18px", { "lineHeight": "28px", "fontWeight": "400" }],
+                    "body-md": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                    "display-lg": ["48px", { "lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                    "body-sm": ["14px", { "lineHeight": "20px", "fontWeight": "400" }],
+                    "label-md": ["14px", { "lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "500" }],
+                    "headline-md": ["24px", { "lineHeight": "32px", "fontWeight": "600" }]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+      body {
+        font-family: 'Inter', sans-serif;
+        -webkit-font-smoothing: antialiased;
+        background-color: #f8f9ff;
+      }
+      .material-symbols-outlined {
+        font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      }
+      .stat-card-shadow {
+        box-shadow: 0px 1px 3px rgba(0,0,0,0.05), 0px 1px 2px rgba(0,0,0,0.03);
+      }
+      .glass-effect {
+        backdrop-filter: blur(8px);
+        background: rgba(255, 255, 255, 0.8);
+      }
+      .safe-pb {
+        padding-bottom: env(safe-area-inset-bottom);
+      }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-background min-h-screen">
+<!-- TopAppBar -->
+<header class="fixed top-0 left-0 w-full z-50 bg-surface dark:bg-surface h-16 border-none">
+<div class="flex justify-between items-center w-full px-gutter max-w-container-max mx-auto h-full">
+<div class="flex items-center gap-md">
+<span class="material-symbols-outlined text-primary dark:text-primary-fixed-dim" data-icon="work_history">work_history</span>
+<h1 class="font-headline-md text-headline-md font-bold text-primary dark:text-primary-fixed-dim">JobTrackr</h1>
+</div>
+<button class="hover:bg-surface-container-low dark:hover:bg-surface-container-highest transition-colors p-sm rounded-full active:opacity-80 active:scale-95 transition-all">
+<span class="material-symbols-outlined text-on-surface-variant dark:text-on-surface-variant" data-icon="settings">settings</span>
+</button>
+</div>
+</header>
+<!-- Main Content Canvas -->
+<main class="pt-20 pb-28 px-md max-w-container-max mx-auto">
+<!-- Welcome Header -->
+<section class="mb-lg">
+<h2 class="font-headline-lg-mobile text-headline-lg-mobile text-on-surface mb-xs">Welcome back, Alex!</h2>
+<p class="font-body-md text-body-md text-on-surface-variant">You have 12 active applications in progress.</p>
+</section>
+<!-- Stats Bento Grid (Mobile Focus) -->
+<section class="grid grid-cols-2 gap-md mb-xl">
+<!-- Active Apps (Large span) -->
+<div class="col-span-2 bg-surface-container-lowest p-lg rounded-xl stat-card-shadow border border-outline-variant flex justify-between items-center overflow-hidden relative">
+<div>
+<p class="font-label-md text-label-md text-on-surface-variant mb-xs">Active Applications</p>
+<p class="font-display-lg text-display-lg text-primary">12</p>
+</div>
+<div class="bg-primary-container/10 p-md rounded-full">
+<span class="material-symbols-outlined text-primary text-4xl" data-icon="description" style="font-variation-settings: 'FILL' 1;">description</span>
+</div>
+<!-- Subtle background visual -->
+<div class="absolute -right-4 -bottom-4 opacity-5 rotate-12">
+<span class="material-symbols-outlined text-9xl" data-icon="work">work</span>
+</div>
+</div>
+<!-- Interviews -->
+<div class="bg-surface-container-lowest p-lg rounded-xl stat-card-shadow border border-outline-variant">
+<p class="font-label-md text-label-md text-on-surface-variant mb-xs">Interviews</p>
+<div class="flex items-baseline gap-xs">
+<p class="font-headline-lg text-headline-lg text-tertiary">2</p>
+<span class="font-label-sm text-label-sm text-tertiary">Next 7 days</span>
+</div>
+</div>
+<!-- Offers -->
+<div class="bg-surface-container-lowest p-lg rounded-xl stat-card-shadow border border-outline-variant">
+<p class="font-label-md text-label-md text-on-surface-variant mb-xs">Offers</p>
+<div class="flex items-baseline gap-xs">
+<p class="font-headline-lg text-headline-lg text-secondary">1</p>
+<span class="font-label-sm text-label-sm text-secondary">Pending</span>
+</div>
+</div>
+</section>
+<!-- CTA Action -->
+<section class="mb-xl">
+<button class="w-full bg-primary text-on-primary font-bold py-md rounded-xl flex items-center justify-center gap-sm shadow-md hover:brightness-110 active:scale-95 transition-all">
+<span class="material-symbols-outlined" data-icon="add_circle">add_circle</span>
+<span class="font-label-md text-label-md">Add New Job</span>
+</button>
+</section>
+<!-- Recent Activity List -->
+<section>
+<div class="flex justify-between items-center mb-md">
+<h3 class="font-headline-md text-headline-md text-on-surface">Recent Activity</h3>
+<button class="text-primary font-label-md text-label-md hover:underline">View all</button>
+</div>
+<div class="space-y-sm">
+<!-- Activity Item 1 -->
+<div class="flex items-start gap-md p-md bg-surface-container-lowest rounded-xl border border-outline-variant stat-card-shadow">
+<div class="h-12 w-12 rounded-lg bg-surface-container flex items-center justify-center flex-shrink-0">
+<img class="h-8 w-8 object-contain" data-alt="Corporate logo for a major tech company like Google, minimalist design, high contrast on a white background, professional tech aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCxTuk5EbNwCJop8VSGL794_qbYhJTwR70VK86iBjanlppgYw2Zg_Z2Wi5DluNtUpqYBKNG1aUb70QYGvyqP34l7ltX2CWcqtivGeSd2e7_OPM568EhaXho0q3-4LfPEDT90s0PtQ-Vb97AbQybSSj_CGW0Sm-K3RjyMjY8ikUwmg6UFULqG_bcQfjcTzcxNiBVNpvcn21G9EcziIzE9Sh1iW4FAOFI9MUCjKx8c1TJunoNMxIwdo40">
+</div>
+<div class="flex-grow">
+<div class="flex justify-between items-start">
+<h4 class="font-label-md text-label-md text-on-surface">Google</h4>
+<span class="font-label-sm text-label-sm text-on-surface-variant">2h ago</span>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant">Interview scheduled for Senior UX Designer</p>
+<div class="mt-sm inline-flex items-center px-sm py-xs bg-tertiary-container/10 rounded-md">
+<span class="w-2 h-2 rounded-full bg-tertiary mr-xs"></span>
+<span class="font-label-sm text-label-sm text-tertiary">Interview</span>
+</div>
+</div>
+</div>
+<!-- Activity Item 2 -->
+<div class="flex items-start gap-md p-md bg-surface-container-lowest rounded-xl border border-outline-variant stat-card-shadow">
+<div class="h-12 w-12 rounded-lg bg-surface-container flex items-center justify-center flex-shrink-0">
+<img class="h-8 w-8 object-contain" data-alt="Modern corporate logo for a startup or fintech company, clean lines, bold typography, minimalist blue and white color palette." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBBwU18iL_iKPMwYofWhpmR1Z1FPGagxHA-b4ulXJyOKOKenXUuLgYXIKooX4I5IySWTgEXmv0cNoRgU880vdZqvm-8Q--5_FXeLRKaf8bi516fY7Kdr_C3OYIo6Aq9EWw6yJMhbrwhikd6QtA89EzxYzHmJS9KIXE2wFOG1GTZ9DhIY0gtZJNIiw7_Lglse2f3LamGChz6SzftzthGXvouaVlSAts_socXTpr32O285aQU2K1-_6B4">
+</div>
+<div class="flex-grow">
+<div class="flex justify-between items-start">
+<h4 class="font-label-md text-label-md text-on-surface">Stripe</h4>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Yesterday</span>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant">Applied to Product Manager</p>
+<div class="mt-sm inline-flex items-center px-sm py-xs bg-primary-container/10 rounded-md">
+<span class="w-2 h-2 rounded-full bg-primary mr-xs"></span>
+<span class="font-label-sm text-label-sm text-primary">Applied</span>
+</div>
+</div>
+</div>
+<!-- Activity Item 3 -->
+<div class="flex items-start gap-md p-md bg-surface-container-lowest rounded-xl border border-outline-variant stat-card-shadow">
+<div class="h-12 w-12 rounded-lg bg-surface-container flex items-center justify-center flex-shrink-0">
+<img class="h-8 w-8 object-contain" data-alt="Minimalist abstract logo for a global software firm, professional corporate branding, elegant geometric symbol, high-end design feel." src="https://lh3.googleusercontent.com/aida-public/AB6AXuB3qt9z51jaKzX_xJ12ks2l6HTDUMlubZbdcBE7f7ZqcmveIUbpB3n3d10ho2lH6YVHO3Lt8_0c8lRbCqchiseGgW3S4o8RB6fdIIiAI2FOqxAUN7TT3tb_8KlRl3XJGE3vzJN_7a6GBlQMzzaw-C36MhreaDuYfLT11Wxut9otDdcEP5uYq4yjXRT0HFcinNa7lRU9FsBrXd1znQ8oafkWdTFwJjcN1DAL_CHjWcIsJBaYNFaD9wLG">
+</div>
+<div class="flex-grow">
+<div class="flex justify-between items-start">
+<h4 class="font-label-md text-label-md text-on-surface">Microsoft</h4>
+<span class="font-label-sm text-label-sm text-on-surface-variant">3d ago</span>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant">Status updated: Under review</p>
+<div class="mt-sm inline-flex items-center px-sm py-xs bg-secondary-container/10 rounded-md">
+<span class="w-2 h-2 rounded-full bg-secondary mr-xs"></span>
+<span class="font-label-sm text-label-sm text-secondary">In Review</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Insights Preview (Bento flavor) -->
+<section class="mt-xl">
+<div class="bg-surface-container p-lg rounded-2xl relative overflow-hidden">
+<div class="relative z-10">
+<h3 class="font-headline-md text-headline-md text-primary mb-xs">Job Seeker Insights</h3>
+<p class="font-body-md text-body-md text-on-surface-variant mb-md max-w-[70%]">Your resume matches 85% of recent Product Design roles.</p>
+<button class="bg-primary-container text-on-primary-container px-md py-sm rounded-lg font-label-md text-label-md hover:bg-opacity-90 transition-all">Check Details</button>
+</div>
+<div class="absolute right-0 bottom-0 opacity-20">
+<span class="material-symbols-outlined text-[120px]" data-icon="query_stats" style="font-variation-settings: 'FILL' 1;">query_stats</span>
+</div>
+</div>
+</section>
+</main>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 left-0 w-full z-50 bg-surface dark:bg-surface-container-low border-t border-outline-variant dark:border-outline shadow-sm h-20 pb-safe px-md flex justify-around items-center rounded-t-xl">
+<!-- Dashboard (Active) -->
+<a class="flex flex-col items-center justify-center bg-secondary-container dark:bg-on-secondary-fixed-variant text-on-secondary-container dark:text-secondary-fixed rounded-full px-4 py-1 scale-90 duration-150" href="#">
+<span class="material-symbols-outlined" data-icon="dashboard" style="font-variation-settings: 'FILL' 1;">dashboard</span>
+<span class="font-label-md text-label-md">Dashboard</span>
+</a>
+<!-- Board -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-on-surface-variant px-4 py-1 hover:text-primary dark:hover:text-primary-fixed transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="view_kanban">view_kanban</span>
+<span class="font-label-md text-label-md">Board</span>
+</a>
+<!-- Applications -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-on-surface-variant px-4 py-1 hover:text-primary dark:hover:text-primary-fixed transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="list_alt">list_alt</span>
+<span class="font-label-md text-label-md">Applications</span>
+</a>
+</nav>
+<!-- Micro-interaction Script -->
+<script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const buttons = document.querySelectorAll('button, a');
+            buttons.forEach(btn => {
+                btn.addEventListener('touchstart', function() {
+                    this.classList.add('opacity-80', 'scale-95');
+                });
+                btn.addEventListener('touchend', function() {
+                    this.classList.remove('opacity-80', 'scale-95');
+                });
+            });
+        });
+    </script>
+</body></html>

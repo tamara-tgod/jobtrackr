@@ -20,19 +20,20 @@ export default function JobCard({ job }: JobCardProps) {
   return (
     <Link
       href={`/jobs/${job.id}`}
-      className="border border-gray-400 px-2 w-full h-24 m-auto rounded-md bg-white flex items-center justify-between"
+      className="border border-outline-variant card-shadow px-2 w-full h-24 m-auto rounded-md bg-white flex items-center justify-between"
     >
       <div className="py-2 px-3 wrap-break w-60 flex flex-col gap-1">
         <h2 className="font-semibold text-sm"> {job.company_name}</h2>
         <p className="text-xs">
           {job.job_title}
         </p>
-        <p className="text-xs text-gray-500">Applied {job.date_applied}</p>
+        <p className="text-xs text-gray-500"> Applied {job.date_applied}</p>
       </div>
-      <div className="w-20">
+      <div>
         <p
-          className={`px-2 py-1.5 rounded-full text-sm text-center ${statusStyles[job.application_status]}`}
+          className={`flex items-center gap-1 px-2 py-1.5 rounded-full text-sm text-center capitalize ${statusStyles[job.application_status]}`}
         >
+          <span className="material-symbols-outlined" style={{ fontSize: "1rem"}}>circle</span>
           {job.application_status}
         </p>
       </div>
