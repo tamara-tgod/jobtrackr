@@ -1,13 +1,10 @@
 import { getJobById } from "@/services/jobService"
 
-type PageProps = {
-  params: Promise<{
-    id: string;
-  }>;
+type JobFooterProps = {
+    id: string; 
 };
 
-export default async function JobFooter({ params }: PageProps) {
-    const { id } = await params;
+export default async function JobFooter({ id }: JobFooterProps) {
   const job = await getJobById(id);
 
    if (!job) {
@@ -16,7 +13,7 @@ export default async function JobFooter({ params }: PageProps) {
 
   return (
 
-    <div className="border-y-2 border-gray-400 mt-5">
+    <div className="border-y-2 border-gray-400 mt-5 p-3 h-52">
         <div className="flex flex-col gap-3 text-gray-400 text-center">
             <p>Created:{job.created_at}</p>
             <p>Last Updated: {job.updated_at}</p>
